@@ -3,7 +3,7 @@
 
 ### AppBar
 
-![appbar_image](https://github.com/encorex32268/ComponentsProject/blob/master/image_appbar.png)
+<img src="https://github.com/encorex32268/ComponentsProject/blob/master/image_appbar.png" width="300">
 
   https://github.com/encorex32268/ComponentsProject/tree/master/app/src/main/java/com/lihan/componentsproject/component/appbar
 
@@ -11,7 +11,8 @@
 
 ### TabLayout
 
-![tablayout_image](https://github.com/encorex32268/ComponentsProject/blob/master/image_tablayout.PNG)
+<img src="https://github.com/encorex32268/ComponentsProject/blob/master/image_tablayout.PNG" width="300">
+
 
 https://github.com/encorex32268/ComponentsProject/tree/master/app/src/main/java/com/lihan/componentsproject/component/tablayout
 
@@ -21,13 +22,14 @@ https://github.com/encorex32268/ComponentsProject/tree/master/app/src/main/java/
 
 BottomBar
 
-![bottombar_image](https://github.com/encorex32268/ComponentsProject/blob/master/image_bottombar.png)
+<img src="https://github.com/encorex32268/ComponentsProject/blob/master/image_bottombar.png" width="300">
 
 https://github.com/encorex32268/ComponentsProject/tree/master/app/src/main/java/com/lihan/componentsproject/component/bottombar
 
 Navigation Parameter 
 
-![nivigation_image](https://github.com/encorex32268/ComponentsProject/blob/master/image_navigation.png)
+<img src="https://github.com/encorex32268/ComponentsProject/blob/master/image_navigation.png" width="300">
+
 
 https://github.com/encorex32268/ComponentsProject/tree/master/app/src/main/java/com/lihan/componentsproject/MainActivity.kt
 
