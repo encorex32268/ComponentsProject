@@ -9,18 +9,27 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Mail
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.lihan.componentsproject.component.appbar.AppBar
 import com.lihan.componentsproject.component.appbar.MenuID
 import com.lihan.componentsproject.component.appbar.MenuItem
+import com.lihan.componentsproject.component.bottombar.BottomItem
+import com.lihan.componentsproject.component.bottombar.MyBottomBar
+import com.lihan.componentsproject.component.navigation.Route
 import com.lihan.componentsproject.component.tablayout.TabLayout
+import com.lihan.componentsproject.screen.HomeScreen
+import com.lihan.componentsproject.screen.MailScreen
+import com.lihan.componentsproject.screen.ProfileScreen
+import com.lihan.componentsproject.screen.subscreen.UserScreen
 import com.lihan.componentsproject.ui.theme.ComponentsProjectTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,6 +38,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComponentsProjectTheme {
                 val context = LocalContext.current
+                val navController = rememberNavController()
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = {
@@ -72,8 +82,69 @@ class MainActivity : ComponentActivity() {
                         ) {
 
                         }
+                    },
+                    bottomBar = {
+                        MyBottomBar(
+                            bottomItems = arrayListOf(
+                                BottomItem(
+                                    name = "Home",
+                                    image = Icons.Default.Home,
+                                    route = Route.HOME
+                                ),
+                                BottomItem(
+                                    name = "Mail",
+                                    image = Icons.Default.Mail,
+                                    route = Route.MAIL
+                                ),
+                                BottomItem(
+                                    name = "Profile",
+                                    image = Icons.Default.Person,
+                                    route = Route.PROFILE
+                                )
+                            ),
+                            navController = navController)
                     }
                 ) {
+                    NavHost(navController = navController, startDestination = Route.HOME){
+
+                        composable(Route.HOME){
+                            HomeScreen()
+                        }
+                        composable(Route.MAIL){
+                            MailScreen()
+                        }
+                        composable(Route.PROFILE){
+                            ProfileScreen(
+                                toCheckUserInfo = { name , mail ->
+                                    navController.navigate(
+                                        Route.USER + "/$name/$mail"
+                                    )
+                                }
+                            )
+                        }
+                        composable(
+                            route = Route.USER + "/{name}/{mail}" ,
+                            arguments = listOf(
+                                navArgument("name"){
+                                    type = NavType.StringType
+                                },
+                                navArgument("mail"){
+                                    type = NavType.StringType
+                                }
+                            )
+                        ){
+                            val name = it.arguments?.getString("name")!!
+                            val mail = it.arguments?.getString("mail")!!
+
+                            UserScreen(
+                                name = name,
+                                mail = mail
+                            )
+
+                        }
+
+
+                    }
 
                     Column(
                         modifier = Modifier.fillMaxSize())
@@ -93,6 +164,7 @@ class MainActivity : ComponentActivity() {
 
 
                 }
+
             }
         }
     }

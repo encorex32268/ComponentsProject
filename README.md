@@ -19,6 +19,91 @@ https://github.com/encorex32268/ComponentsProject/tree/master/app/src/main/java/
 
 ### BottomNavigation Bar (Navigation)
 
+BottomBar
+
+![bottombar_image](https://github.com/encorex32268/ComponentsProject/blob/master/image_bottombar.png)
+
+https://github.com/encorex32268/ComponentsProject/tree/master/app/src/main/java/com/lihan/componentsproject/component/bottombar
+
+Navigation Parameter 
+
+![nivigation_image](https://github.com/encorex32268/ComponentsProject/blob/master/image_navigation.png)
+
+https://github.com/encorex32268/ComponentsProject/tree/master/app/src/main/java/com/lihan/componentsproject/MainActivity.kt
+
+Put Parameter :
+
+ProfileScreen to UserScreen
+```
+MainActivity.kt
+            composable(
+                ProfileScreen(
+                                toCheckUserInfo = { name , mail ->
+                                    navController.navigate(
+                                        Route.USER + "/$name/$mail"
+                                    )
+                                }
+                            )
+                )            
+```
+
+Get Parameter :
+
+UserScreen
+```
+MainActivity.kt
+
+                    composable(
+                            route = Route.USER + "/{name}/{mail}" ,
+                            arguments = listOf(
+                                navArgument("name"){
+                                    type = NavType.StringType
+                                },
+                                navArgument("mail"){
+                                    type = NavType.StringType
+                                }
+                            )
+                        ){
+                            val name = it.arguments?.getString("name")!!
+                            val mail = it.arguments?.getString("mail")!!
+
+                            UserScreen(
+                                name = name,
+                                mail = mail
+                            )
+
+                        } 
+
+```
+
+
+
+Install Navigation 
+```
+build.gralde (Project)
+    
+    buildscript {
+        ext {
+        compose_version = '1.1.0-beta01'
+        nav_version = "2.5.2"
+    }
+
+build.gralde (APP)
+    
+    dependencies{
+        // Kotlin
+        implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+        implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+        // Feature module Support
+        implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+        // Testing Navigation
+        androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+        // Jetpack Compose Integration
+        implementation("androidx.navigation:navigation-compose:$nav_version")
+    }
+    
+```
+
 ##
 
 ### Circle Image
