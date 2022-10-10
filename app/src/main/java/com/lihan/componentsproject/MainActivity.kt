@@ -32,6 +32,7 @@ import com.lihan.componentsproject.screen.ProfileScreen
 import com.lihan.componentsproject.screen.subscreen.UserScreen
 import com.lihan.componentsproject.ui.theme.ComponentsProjectTheme
 
+@ExperimentalMaterialApi
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,7 +104,7 @@ class MainActivity : ComponentActivity() {
                                 )
                             ),
                             navController = navController)
-                    }
+                    },
                 ) {
                     NavHost(navController = navController, startDestination = Route.HOME){
 
@@ -158,7 +159,6 @@ class MainActivity : ComponentActivity() {
                             onTabClick ={
                                 Toast.makeText(context,"${it}",Toast.LENGTH_SHORT).show()
                             })
-
 
                     }
 

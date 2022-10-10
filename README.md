@@ -121,5 +121,39 @@ build.gralde (APP)
 
 ### BottomSheet
 
+<img src="https://github.com/encorex32268/ComponentsProject/blob/master/image_bottomsheet.png" width="300">
+
+https://github.com/encorex32268/ComponentsProject/tree/master/app/src/main/java/com/lihan/componentsproject/component/bottomsheet
+
+On Screen :
+
+HomeScreen.kt
+```
+    val sheetState = rememberBottomSheetState(
+        initialValue = BottomSheetValue.Collapsed
+    )
+    val scaffoldState = rememberBottomSheetScaffoldState(
+        bottomSheetState = sheetState
+    )
+    val scope = rememberCoroutineScope()
+    val width = LocalConfiguration.current.screenWidthDp
+    val height = LocalConfiguration.current.screenHeightDp
+    BottomSheetScaffold(
+        scaffoldState = scaffoldState,
+        sheetPeekHeight = 0.dp,
+        sheetContentColor = Color.Blue,
+        sheetContent = {
+         MyBottomSheet(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(250.dp),
+            text = "${width} / ${height}",
+        )
+    }) {
+        /// Other View
+    }
+
+```
+
 
 ##
