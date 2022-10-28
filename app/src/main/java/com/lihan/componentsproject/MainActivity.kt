@@ -106,7 +106,7 @@ class MainActivity : ComponentActivity() {
                             navController = navController)
                     },
                 ) {
-                    NavHost(navController = navController, startDestination = Route.HOME){
+                    NavHost(navController = navController, startDestination = Route.MAIL){
 
                         composable(Route.HOME){
                             HomeScreen()

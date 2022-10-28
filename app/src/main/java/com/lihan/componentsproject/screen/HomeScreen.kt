@@ -1,11 +1,13 @@
 package com.lihan.componentsproject.screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
@@ -68,6 +70,27 @@ fun HomeScreen(
             }) {
                 Text(text = "Show Bottom Sheet")
             }
+
+            val gradient = Brush.horizontalGradient(
+                listOf(Color.Red , Color.Yellow)
+            )
+            Button(
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Transparent
+                ),
+                contentPadding = PaddingValues(),
+                onClick = { })
+            {
+                Box(
+                    modifier = Modifier
+                        .background(gradient)
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = "text", color = Color.White)
+                }
+            }
+
         }
 
     }
